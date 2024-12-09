@@ -1,38 +1,47 @@
-version: "0.1.0"
+version: '0.1.0'
 config:
   testRunner:
-    command: pytest
+    command: python3 -m unittest
     args:
-      - --maxfail=1
-      - --disable-warnings
-      - --capture=no
-    directory: python_project
-  setup:
-    commands:
-      - cd python_project && pip install -r requirements.txt
+      filter: 
+    directory: .coderoad
   repo:
-    uri: https://github.com/Bewin007/coderoad-python.git
-    branch: main
+    uri: https://github.com/username/python-exercises
+    branch: v0.1.0
   dependencies:
     - name: python
-      version: '>=3.8'
-  reset:
+      version: '>=3.6'
+  setup:
     commands:
-      - echo 'resetting environment'
-      - rm -rf venv/
-      - python3 -m venv venv
-      - source venv/bin/activate
-      - pip install -r requirements.txt
+      - cd .coderoad && pip install -r requirements.txt
 levels:
+  - id: '1'
+    title: 'Print Statement'
+    steps:
+      - id: '1.1'
+        title: 'Print Hello World'
+        action: 'Write a Python script that prints "Hello, World!"'
   - id: '2'
+    title: 'Input from User'
     steps:
       - id: '2.1'
-        setup:
-          commands:
-            - pip install -r requirements.txt
-          files:
-            - requirements.txt
-        solution:
-          files:
-            - variables.py
-            - test_variables.py
+        title: 'Ask for Name'
+        action: 'Write a Python script that asks the user for their name and prints a greeting.'
+  - id: '3'
+    title: 'Arithmetic Operations'
+    steps:
+      - id: '3.1'
+        title: 'Basic Calculator'
+        action: 'Write a Python script that asks for two numbers and performs addition, subtraction, multiplication, and division.'
+  - id: '4'
+    title: 'Conditions (if-else)'
+    steps:
+      - id: '4.1'
+        title: 'Check Even or Odd'
+        action: 'Write a Python script that checks if a number is even or odd.'
+  - id: '5'
+    title: 'Loops (for and while)'
+    steps:
+      - id: '5.1'
+        title: 'Print Numbers from 1 to 10'
+        action: 'Write a Python script that prints numbers from 1 to 10 using a loop.'
